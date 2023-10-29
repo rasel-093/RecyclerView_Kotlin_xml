@@ -13,11 +13,17 @@ class MyAdapter(
     private val newsList: ArrayList<News>
 ): RecyclerView.Adapter<MyViewHolder>() {
 
+    private lateinit var mListener: onItemClickListener
+
+    fun setOnItemClickListener(listener: onItemClickListener){
+        mListener = listener
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         //itemView is of View type. Creating this view from item_row layout
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_row,parent,false)
         //Returning MyviewHolder type object
-        return MyViewHolder(itemView)
+        return MyViewHolder(itemView,  mListener)
     }
 
     override fun getItemCount(): Int {

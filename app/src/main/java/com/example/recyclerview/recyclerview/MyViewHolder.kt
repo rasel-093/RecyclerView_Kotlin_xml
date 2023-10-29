@@ -6,11 +6,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.recyclerview.R
 import com.google.android.material.imageview.ShapeableImageView
 
-class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+class MyViewHolder(itemView: View,listener: onItemClickListener): RecyclerView.ViewHolder(itemView){
     //itemView is from item_row layout.
 
     //getting id of title_image
     val titleImage: ShapeableImageView = itemView.findViewById(R.id.title_image)
     //getting id of headingTv
     val headingTv: TextView = itemView.findViewById(R.id.headingTv)
+
+    //onClick listener to item
+    init {
+        itemView.setOnClickListener {
+            listener.onItemClick(adapterPosition)
+        }
+    }
 }
