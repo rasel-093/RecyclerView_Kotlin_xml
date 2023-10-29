@@ -15,9 +15,19 @@ class MyAdapter(
 
     private lateinit var mListener: onItemClickListener
 
+    //Functionality
     fun setOnItemClickListener(listener: onItemClickListener){
         mListener = listener
     }
+    fun deleteItem(i: Int){
+        newsList.removeAt(i)
+        notifyDataSetChanged()
+    }
+    fun addItem(i: Int, news: News){
+        newsList.add(i,news)
+        notifyDataSetChanged()
+    }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         //itemView is of View type. Creating this view from item_row layout
